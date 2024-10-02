@@ -19,5 +19,4 @@ if __name__ == '__main__':
             print("NO")
             exit()
 
-    for r in result:
-        print(r)
+    print('\n'.join(result))
