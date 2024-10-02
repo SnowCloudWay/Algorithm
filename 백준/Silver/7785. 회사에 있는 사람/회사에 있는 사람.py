@@ -3,12 +3,12 @@ import sys
 if __name__ == '__main__':
     n = int(input())
 
-    d = {}
+    st = set()
     for _ in range(n):
         name, state = map(str, sys.stdin.readline().split())
         if state == "enter":
-            d[name] = state
+            st.add(name)
         elif state == "leave":
-            del d[name]
+            st.discard(name)
 
-    print('\n'.join(sorted(d.keys(), reverse=True)))
+    print('\n'.join(sorted(st, reverse=True)))
