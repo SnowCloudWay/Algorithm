@@ -1,8 +1,10 @@
+import sys
+
 if __name__ == '__main__':
-    K = int(input())
+    K = int(sys.stdin.readline().rstrip())
     s = []
     for _ in range(K):
-        num = int(input())
+        num = int(sys.stdin.readline().rstrip())
         if num == 0:
             s.pop()
         else:
