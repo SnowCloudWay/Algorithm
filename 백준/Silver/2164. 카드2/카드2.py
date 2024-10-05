@@ -1,15 +1,12 @@
 import sys
-from queue import Queue
+from collections import deque
 
 N = int(sys.stdin.readline().rstrip())
-que = Queue()
-
-for i in range(N):
-    que.put(i+1)
+deq = deque(i+1 for i in range(N))
 
 while True:
-    if que.qsize() == 1:
-        print(que.get())
+    if len(deq) == 1:
+        print(deq[0])
         break
-    que.get()
-    que.put(que.get())
+    deq.popleft()
+    deq.append(deq.popleft())
