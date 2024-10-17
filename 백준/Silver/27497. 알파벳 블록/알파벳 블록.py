@@ -3,25 +3,25 @@ from collections import deque
 
 n = int(sys.stdin.readline())
 dq = deque()
-stack = []
+dqq = deque()
 
 for _ in range(n):
     command = list(map(str, sys.stdin.readline().split()))
     if command[0] == '1':
         dq.append(command[1])
-        stack.append(command[0])
+        dqq.append(command[0])
     elif command[0] == '2':
         dq.appendleft(command[1])
-        stack.append(command[0])
+        dqq.append(command[0])
     elif command[0] == '3':
-        if len(stack) != 0:
-            r = stack[-1]
+        if len(dqq) != 0:
+            r = dqq[-1]
             if r == '1':
                 dq.pop()
-                stack.pop()
+                dqq.pop()
             else:
                 dq.popleft()
-                stack.pop()
+                dqq.pop()
 
 if len(dq) != 0:
     sys.stdout.write(''.join(dq))
