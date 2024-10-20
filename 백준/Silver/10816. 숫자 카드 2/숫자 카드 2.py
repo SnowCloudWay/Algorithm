@@ -12,5 +12,5 @@ m = int(input())
 check = list(map(int, input().split()))
 l = []
 for c in check:
-    l.append(d[c])
-print(*l)
+    l.append(str(d[c]))
+sys.stdout.write(' '.join(l))
