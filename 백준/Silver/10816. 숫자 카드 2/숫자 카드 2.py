@@ -10,5 +10,7 @@ for card in cards:
 
 m = int(input())
 check = list(map(int, input().split()))
+l = []
 for c in check:
-    print(d[c], end=' ')
+    l.append(d[c])
+print(*l)
