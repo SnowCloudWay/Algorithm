@@ -1,13 +1,11 @@
 import sys
-from collections import deque
 
 n = int(sys.stdin.readline())
-dq = deque(i for i in range(1, n+1))
+card = [i for i in range(1, n+1)]
+out = []
 
-while True:
-    if len(dq) == 1:
-        break
-    sys.stdout.write(str(dq.popleft())+' ')
-    dq.append(dq.popleft())
+while len(card) > 1:
+    out.append(card.pop(0))
+    card.append(card.pop(0))
 
-sys.stdout.write(str(dq[0]))
+print(*out, card[0])
