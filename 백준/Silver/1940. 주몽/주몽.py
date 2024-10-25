@@ -15,11 +15,7 @@ while start < end:
         start += 1
         end -= 1
     elif intervalSum < m:
-        intervalSum -= nums[start]
         start += 1
-        intervalSum += nums[start]
     else:
-        intervalSum -= nums[end]
         end -= 1
-        intervalSum += nums[end]
 sys.stdout.write(str(cnt))
