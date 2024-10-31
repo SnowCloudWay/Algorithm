@@ -10,26 +10,31 @@ public class Main {
         int t = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < t; i++) {
+            Stack<String> stackStr = new Stack<>();
             String s = br.readLine();
-            int cnt = 0;
+
             for (int j = 0; j < s.length(); j++) {
                 char c = s.charAt(j);
                 if (c == '(') {
-                    ++cnt;
-                } else if (c == ')') {
-                    --cnt;
-                    if (cnt < 0) {
+                    stackStr.push(String.valueOf(c));
+                } else {
+                    if (!stackStr.isEmpty() && stackStr.peek().equals("(")) {
+                        stackStr.pop();
+                    } else {
+                        stackStr.push(String.valueOf(c));
                         break;
                     }
                 }
             }
-            if (cnt == 0) {
+
+            if (stackStr.isEmpty()) {
                 System.out.println("YES");
             } else {
                 System.out.println("NO");
             }
+
         }
-        
+
     }
 
 }
