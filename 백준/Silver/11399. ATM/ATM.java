@@ -1,35 +1,34 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.PriorityQueue;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
-		PriorityQueue<Integer> pq = new PriorityQueue<>();
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		int n = Integer.parseInt(br.readLine());
-		StringTokenizer str = new StringTokenizer(br.readLine());
-		int pre = 0;
-		int result = 0;
-		
-		
-		for(int i = 0; i < n; i++) {
-			pq.add(Integer.parseInt(str.nextToken()));
-		}
-		
-		while(pq.peek() != null) {
-			if(pq.peek() == null) break;
-			result += pre + pq.peek();
-			pre += pq.poll();
-		}
-		
-		System.out.println(result);
-		
-	}
-	
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st;
+
+        int n = Integer.parseInt(br.readLine());
+        int[] times = new int[n];
+
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n; i++) {
+            times[i] = Integer.parseInt(st.nextToken());
+        }
+        Arrays.sort(times);
+
+        int sumTime = 0;
+        int totalTime = times[0];
+
+        for (int i = 1; i < n; i++) {
+            sumTime += times[i-1];
+            totalTime += sumTime + times[i];
+        }
+
+        bw.write(Integer.toString(totalTime));
+        bw.flush();
+
+    }
+
 }
